@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+# Architecture notes
+
+- Single-page site: all sections live in `src/routes/index.tsx` with hash-anchor nav (#cars, #rates, #reviews, #booking, #contact) — the user explicitly chose one scrolling page.
+- Booking submissions: public server fn `submitBooking` (src/lib/booking.functions.ts, zod-validated, honeypot field `website`) inserts into the `public.bookings` table (anon INSERT only via RLS). No real prices are shown anywhere — never invent PKR amounts.
